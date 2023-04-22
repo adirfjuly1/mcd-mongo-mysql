@@ -64,10 +64,10 @@ Salida:
 
 Respuesta:
 ```sql
-select l.language_id, l.name , count(f.film_id)
-from film f
-join language l on f.language_id=l.language_id
-group by l.name,l.language_id;
+select a.actor_id, a.first_name ,a.last_name ,count(fa.film_id)as film_count
+from actor a
+join film_actor fa on fa.actor_id = a.actor_id 
+group by a.actor_id, a.first_name ,a.last_name;
 
 
 
