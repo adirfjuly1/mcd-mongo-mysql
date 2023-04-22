@@ -65,10 +65,9 @@ Salida:
 Respuesta:
 ```sql
 select l.language_id, l.name , count(f.film_id)
-from film f
-left join language l on f.language_id=l.language_id
+from language l 
+left join  film f on f.language_id=l.language_id
 group by l.name,l.language_id;
-
 
 
 ```
