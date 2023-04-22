@@ -94,10 +94,11 @@ Respuesta:
 ```sql
 -- Su respuesta aqui:
 
-select a.actor_id, a.first_name ,a.last_name ,count(fa.film_id)as film_count
-from actor a
-join film_actor fa on fa.actor_id = a.actor_id 
-group by a.actor_id, a.first_name ,a.last_name;
+SELECT a.actor_id,a.first_name, a.last_name, fa.film_id as film_count
+FROM actor a
+JOIN film_actor fa ON a.actor_id = fa.actor_id
+GROUP BY a.actor_id,a.first_name, a.last_name, fa.film_id
+HAVING COUNT(fa.film_id) > 35;
 
 ```
 
