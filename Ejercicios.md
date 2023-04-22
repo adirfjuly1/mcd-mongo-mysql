@@ -64,9 +64,12 @@ Salida:
 
 Respuesta:
 ```sql
--- Su respuesta aqui:
+select l.language_id, l.name , count(f.film_id)
+from film f
+join language l on f.language_id=l.language_id
+group by l.name,l.language_id;
 
-SELECT ...
+
 
 ```
 
