@@ -163,8 +163,7 @@ db.film_actor.aggregate([
   }
 ]);
 
-```
-db.film_actor.aggregate(...
+
 ```
 
 3. Mostrar el listado de los 10 de actores que mas peliculas realizó en la categoria `Comedy`. (Ver lookup, unwind, match, group, limit)
