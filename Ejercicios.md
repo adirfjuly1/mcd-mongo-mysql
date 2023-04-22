@@ -95,8 +95,11 @@ Respuesta:
 ```sql
 -- Su respuesta aqui:
 
-SELECT ...
-
+select a.actor_id a.first_name a.last_name count(f.film_id) film_count
+actor a
+join actor_info ai on a.actor_id=ai.actor_id
+join film f on ai.film_id=f.film_id
+group by f.film_id;
 ```
 
 4. Mostrar el listado de los 10 de actores que mas peliculas realizó en la categoria `Comedy`.
