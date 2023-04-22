@@ -37,7 +37,12 @@ Respuesta:
 ```sql
 -- Su respuesta aqui:
 
-SELECT ...
+select count(c.city_id) as city_id,city,count(s.address_id) as address_id
+from city c 
+join address a on c.city_id=a.city_id
+join store s on a.address_id=s.address_id
+join staff st on st.store_id=s.store_id
+group by city;
 
 ```
 
