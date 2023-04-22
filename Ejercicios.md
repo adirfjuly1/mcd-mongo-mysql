@@ -64,10 +64,10 @@ Salida:
 
 Respuesta:
 ```sql
-select a.actor_id, a.first_name ,a.last_name ,count(fa.film_id)as film_count
-from actor a
-join film_actor fa on fa.actor_id = a.actor_id 
-group by a.actor_id, a.first_name ,a.last_name;
+select l.language_id, l.name , count(f.film_id)
+from film f
+left join language l on f.language_id=l.language_id
+group by l.name,l.language_id;
 
 
 
@@ -95,11 +95,11 @@ Respuesta:
 ```sql
 -- Su respuesta aqui:
 
-select a.actor_id a.first_name a.last_name count(f.film_id) film_count
-actor a
-join actor_info ai on a.actor_id=ai.actor_id
-join film f on ai.film_id=f.film_id
-group by f.film_id;
+select a.actor_id, a.first_name ,a.last_name ,count(fa.film_id)as film_count
+from actor a
+join film_actor fa on fa.actor_id = a.actor_id 
+group by a.actor_id, a.first_name ,a.last_name;
+
 ```
 
 4. Mostrar el listado de los 10 de actores que mas peliculas realizó en la categoria `Comedy`.
