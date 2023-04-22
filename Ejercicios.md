@@ -102,7 +102,7 @@ HAVING COUNT(fa.film_id) > 35;
 
 ```
 
-4. show.
+4. Mostrar el listado de los 10 de actores que mas peliculas realizó en la categoria `Comedy` show.
 
 Salida:
 ```
@@ -126,7 +126,14 @@ Respuesta:
 ```sql
 -- Su respuesta aqui:
 
-SELECT ...
+SELECT a.actor_id,a.first_name,a.last_name
+FROM actor a
+JOIN film_actor fa ON a.actor_id = fa.actor_id
+JOIN film f ON fa.film_id = f.film_id
+JOIN film_category  fc ON f.film_id = fc.film_id
+JOIN category c ON fc.category_id = c.category_id
+WHERE c.name = 'Comedy'
+GROUP BY a.actor_id,a.first_name,a.last_name
 
 ```
 
@@ -154,11 +161,10 @@ Salida:
 Respuesta:
 ```sql
 -- Su respuesta aqui:
-SELECT a.actor_id,a.first_name,a.last_name
+SELECT DISTINCT a.actor_id, a.first_name, a.last_name
 FROM actor a
-JOIN film_actor fa ON a.actor_id = fa.actor_id
-JOIN film f ON fa.film_id = f.film_id
-JOIN film_category  fc ON f.film_id = fc.film_id
-JOIN category c ON fc.category_id = c.category_id
-WHERE c.name = 'Comedy'
-GROUP BY a.actor_id,a.first_name,a.last_name
+LEFT JOIN film_actor fa ON a.actor_id = fa.actor_id
+LEFT JOIN film_category  fc ON fa.film_id = fc.film_id
+WHERE fa.category_id != (SELECT category_id FROM category WHERE name = 'Comedy')
+OR fa.category_id IS NULL
+ORDER BY a.actor_id;
